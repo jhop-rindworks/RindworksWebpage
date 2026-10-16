@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"><link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"><style>body{margin:0;background:#FFFFFF;color:#0F172A;font-family:'Plus Jakarta Sans',sans-serif}a{color:#22105C}a:hover{color:#16A34A}</style></helmet>
+<div data-screen-label="DataBits" style="font-family:'Plus Jakarta Sans',sans-serif;color:#0F172A;background:#FFFFFF;min-height:100vh">
+  <dc-import name="Nav" active="databits" hint-size="100%,66px"></dc-import>
+
+  <section style="max-width:1200px;margin:0 auto;padding:clamp(48px,7vw,96px) clamp(20px,4vw,48px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,440px),1fr));gap:48px;align-items:center">
+    <div style="display:flex;flex-direction:column;gap:22px;align-items:flex-start">
+      <div style="display:flex;align-items:center;gap:14px">
+        <img src="assets/databits-logo.png" alt="DataBits" style="flex:none;width:88px;height:88px;border-radius:20px;background:#FFFFFF;border:1px solid #E2E8F0;box-sizing:border-box;box-shadow:0 10px 24px rgba(34,16,92,0.12)">
+        <span style="background:#F3F0FB;color:#22105C;font-size:13px;font-weight:600;padding:6px 12px;border-radius:999px">Coming soon</span>
+      </div>
+      <h1 style="margin:0;font-size:clamp(44px,6vw,72px);font-weight:800;letter-spacing:-0.035em;line-height:1.02;color:#22105C">DataBits</h1>
+      <p style="margin:0;font-size:20px;line-height:1.5;color:#334155;max-width:560px">DataBits turns scattered data into clear answers. Connect spreadsheets, databases, and APIs, then clean, combine, and explore your data in one visual workspace. Build repeatable workflows, create dashboards, and share insights—with AI assistance along the way.</p>
+    </div>
+    <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:20px;padding:28px;box-shadow:0 20px 48px rgba(34,16,92,0.10);display:flex;flex-direction:column;gap:20px">
+      <div style="display:flex;justify-content:space-between;align-items:center"><span style="font-size:15px;font-weight:600;color:#22105C">Dashboard preview</span><div style="display:flex;gap:14px;font-size:12px;color:#64748B"><span style="display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:2px;background:#22105C"></span>Current</span><span style="display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:2px;background:#86D9A3"></span>Previous</span></div></div>
+      <div style="display:flex;align-items:flex-end;justify-content:space-between;gap:8px;height:200px;padding-bottom:4px;border-bottom:1px solid #E2E8F0">
+        <sc-for list="{{ bars }}" as="b" hint-placeholder-count="7">
+          <div style="flex:1;display:flex;align-items:flex-end;justify-content:center;gap:4px;height:100%">
+            <div style="width:30%;max-width:14px;height:{{b.p}}%;background:#86D9A3;border-radius:4px 4px 0 0"></div>
+            <div style="width:30%;max-width:14px;height:{{b.c}}%;background:#22105C;border-radius:4px 4px 0 0"></div>
+          </div>
+        </sc-for>
+      </div>
+      <div style="display:flex;justify-content:space-between;font-size:12px;color:#64748B"><sc-for list="{{ bars }}" as="b" hint-placeholder-count="7"><span style="flex:1;text-align:center">{{ b.d }}</span></sc-for></div>
+    </div>
+  </section>
+
+  <section style="background:#F8FAFC">
+    <div style="max-width:1200px;margin:0 auto;padding:clamp(56px,8vw,96px) clamp(20px,4vw,48px);display:flex;flex-direction:column;gap:40px">
+      <h2 style="margin:0;font-size:clamp(28px,3.4vw,40px);font-weight:700;letter-spacing:-0.02em;color:#22105C;max-width:600px;text-wrap:balance">One app for the whole data journey.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:20px">
+        <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+          <div style="background:#FFFFFF;border:1px solid #E2E8F0;border-radius:16px;padding:28px;display:flex;flex-direction:column;gap:12px">
+            <div style="display:flex;justify-content:space-between;align-items:center"><i class="ph {{ s.icon }}" style="font-size:30px;color:#22105C"></i><span style="font-size:13px;font-weight:600;color:#64748B">{{ s.n }}</span></div>
+            <h3 style="margin:8px 0 0;font-size:18px;font-weight:600;color:#22105C">{{ s.title }}</h3>
+            <p style="margin:0;font-size:15px;line-height:1.6;color:#334155">{{ s.body }}</p>
+          </div>
+        </sc-for>
+      </div>
+      <p style="margin:0;font-size:16px;color:#334155">DataBits is in development. We’ll share more as launch gets closer.</p>
+    </div>
+  </section>
+
+  <div style="height:clamp(56px,8vw,96px)"></div>
+  <dc-import name="Footer" hint-size="100%,360px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const D = [['Mon',42,55],['Tue',50,62],['Wed',38,70],['Thu',60,92],['Fri',45,58],['Sat',30,48],['Sun',52,80]];
+    return {
+      bars: D.map(([d,p,c]) => ({ d, p, c })),
+      steps: [
+        { n: '01', icon: 'ph-flow-arrow', title: 'Build visually. Save the steps.', body: 'Drag and drop reusable “Bits” to clean, join, and transform data into repeatable pipelines.' },
+        { n: '02', icon: 'ph-sparkle', title: 'Describe it. Build it with AI.', body: 'Ask questions in plain English and get help building pipelines, exploring your data, and creating reports.' },
+        { n: '03', icon: 'ph-presentation-chart', title: 'Make your data tell a story.', body: 'Turn datasets into interactive dashboards and polished reports, with filters, custom branding, and sharing tools.' },
+        { n: '04', icon: 'ph-code', title: 'Take your code with you.', body: 'Export visual workflows as readable Python, Airflow DAGs, or Jupyter notebooks to extend and run in your own environment.' }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>

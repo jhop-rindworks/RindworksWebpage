@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"></helmet>
+<div style="display:flex;flex-direction:column;align-items:center;gap:{{ gap }}px;width:{{ w }}px;max-width:100%;font-family:'Plus Jakarta Sans',sans-serif">
+  <svg viewBox="0 0 700 400" style="width:100%;height:auto;display:block" aria-label="RindWorks logo mark">
+    <defs><clipPath id="rw-melon"><circle cx="330" cy="40" r="288"></circle></clipPath></defs>
+    <g clip-path="url(#rw-melon)">
+      <sc-for list="{{ grid }}" as="c" hint-placeholder-count="0"><rect x="{{ c.x }}" y="{{ c.y }}" width="42" height="42" rx="7" fill="{{ c.f }}"></rect></sc-for>
+    </g>
+    <sc-for list="{{ strays }}" as="c" hint-placeholder-count="0"><rect x="{{ c.x }}" y="{{ c.y }}" width="{{ c.s }}" height="{{ c.s }}" rx="6" fill="#FF2D55"></rect></sc-for>
+    <path d="{{ arc }}" fill="none" stroke="#16A34A" stroke-width="36" stroke-linecap="round"></path>
+  </svg>
+  <sc-if value="{{ showWordmark }}" hint-placeholder-val="{{ true }}">
+    <div style="display:flex;flex-direction:column;align-items:center;gap:{{ tagGap }}px;line-height:1">
+      <span style="font-size:{{ wordSize }}px;font-weight:700;letter-spacing:-0.02em;white-space:nowrap"><span style="color:#22105C">Rind</span><span style="color:#16A34A">Works</span></span>
+      <span style="font-size:{{ tagSize }}px;font-weight:600;letter-spacing:0.42em;margin-right:-0.42em;color:#22105C;white-space:nowrap">FRUITFUL SOFTWARE</span>
+    </div>
+  </sc-if>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:460,&quot;height&quot;:380},&quot;size&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:420,&quot;tsType&quot;:&quot;number&quot;},&quot;showWordmark&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const S = this.props.size ?? 420;
+    const cols = [255, 308, 361, 414, 467, 520, 573], rows = [39, 97, 154, 209, 264];
+    const grid = [];
+    rows.forEach((y, r) => cols.forEach((x, i) => {
+      if (r >= 3 && i === 0) return;
+      grid.push({ x, y, f: i === 0 ? '#FF4F72' : '#FF2D55' });
+    }));
+    const strays = [[155,43,30],[192,100,26],[45,150,28],[160,140,30],[110,226,28],[218,218,28],[178,274,28]].map(([x,y,s]) => ({ x, y, s }));
+    const cx = 330, cy = 40, r = 320, a0 = 1 * Math.PI / 180, a1 = 87 * Math.PI / 180;
+    const p = a => `${(cx + r * Math.cos(a)).toFixed(1)} ${(cy + r * Math.sin(a)).toFixed(1)}`;
+    const k = S / 420;
+    return {
+      w: S, grid, strays, arc: `M ${p(a0)} A ${r} ${r} 0 0 1 ${p(a1)}`,
+      showWordmark: this.props.showWordmark ?? true,
+      gap: Math.round(18 * k), wordSize: Math.round(64 * k), tagSize: Math.max(9, Math.round(14 * k)), tagGap: Math.round(14 * k)
+    };
+  }
+}
+</script>
+</body>
+</html>
