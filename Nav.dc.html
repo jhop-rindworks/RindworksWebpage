@@ -29,7 +29,7 @@
 class Component extends DCLogic {
   renderVals() {
     const a = this.props.active ?? 'home';
-    const L = [['quickgrab','Jack’s Picker','jacks-picker.html'],['databits','DataBits','databits.html'],['about','About','about.html'],['contact','Contact','contact.html']];
+    const L = [['quickgrab','QuickGrab','quickgrab.html'],['databits','DataBits','databits.html'],['about','About','about.html'],['contact','Contact','contact.html']];
     return { links: L.map(([k,label,href]) => ({ label, href, color: k===a ? '#22105C' : '#334155', border: k===a ? '#16A34A' : 'transparent' })) };
   }
 }
