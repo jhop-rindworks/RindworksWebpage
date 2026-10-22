@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<!-- Generated from store/support.md in the QuickGrab repo by scripts/build-privacy-page.mjs. Edit the Markdown there, not this file. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QuickGrab Support · RindWorks</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"><link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"><style>body{margin:0;background:#FFFFFF;color:#0F172A;font-family:'Plus Jakarta Sans',sans-serif}a{color:#22105C}a:hover{color:#16A34A}main{max-width:760px;margin:0 auto;padding:clamp(48px,7vw,88px) clamp(20px,4vw,48px) clamp(56px,8vw,96px)}main h1{margin:0 0 12px;font-size:clamp(36px,5vw,52px);font-weight:800;letter-spacing:-0.035em;line-height:1.06;color:#22105C}main h1+p{font-size:15px;color:#64748B}main h2{margin:44px 0 12px;font-size:clamp(22px,2.6vw,28px);font-weight:700;letter-spacing:-0.02em;line-height:1.2;color:#22105C}main h3{margin:28px 0 8px;font-size:18px;font-weight:600;color:#22105C}main p,main ul{margin:0 0 16px;font-size:17px;line-height:1.7;color:#334155}main ul{padding-left:22px}main li{margin-bottom:8px}main strong{color:#0F172A;font-weight:600}main code{background:#F1F5F9;border-radius:6px;padding:2px 6px;font-size:0.88em;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;overflow-wrap:anywhere}</style></helmet>
+<div data-screen-label="QuickGrab Support" style="font-family:'Plus Jakarta Sans',sans-serif;color:#0F172A;background:#FFFFFF;min-height:100vh">
+  <dc-import name="Nav" active="quickgrab" hint-size="100%,66px"></dc-import>
+  <main>
+<h1>QuickGrab Support</h1>
+<p>QuickGrab (on the App Store as QuickGrab: Screen Capture) is a screenshot, screen recording and annotation app for Mac, made by Rind Works.</p>
+<h2>Contact us</h2>
+<p>Email <a href="mailto:hello@rindworks.com">hello@rindworks.com</a> with your question. If something isn't working, tell us your macOS version and the steps that led to the problem. You can also attach the app's error log: open <strong>Settings ▸ Storage ▸ Diagnostic log</strong>. It lists the errors and the names of the files involved, never your captures.</p>
+<h2>Common questions</h2>
+<h3>Captures show only my desktop background</h3>
+<p>macOS hasn't allowed QuickGrab to record the screen yet. Open <strong>System Settings ▸ Privacy &amp; Security ▸ Screen &amp; System Audio Recording</strong>, turn on QuickGrab, then quit and reopen the app.</p>
+<h3>Where are my captures?</h3>
+<p>In <strong>Pictures ▸ QuickGrab</strong>, unless you chose another folder in <strong>Settings ▸ Storage</strong>. Your annotations are kept in a hidden <code>.annotations</code> folder there, so markups stay editable when you reopen a capture.</p>
+<h3>A hotkey doesn't work</h3>
+<p>The defaults are:</p>
+<ul>
+  <li><strong>⌘⇧2</strong> Region</li>
+  <li><strong>⌘⇧1</strong> Full screen</li>
+  <li><strong>⌘⌥⇧W</strong> Window</li>
+  <li><strong>⌘⌥⇧2</strong> Repeat last region</li>
+  <li><strong>⌘⌥⇧T</strong> Copy text from the screen</li>
+</ul>
+<p>Another app may already use the same keys. Pick different ones in <strong>Settings ▸ Capture ▸ Edit Hotkeys…</strong>. To use ⌘⇧3, ⌘⇧4 or ⌘⇧5, first turn off the Mac's own screenshot shortcuts in <strong>System Settings ▸ Keyboard ▸ Keyboard Shortcuts ▸ Screenshots</strong>.</p>
+<h3>The microphone or camera doesn't turn on in a recording</h3>
+<p>Allow QuickGrab in <strong>System Settings ▸ Privacy &amp; Security ▸ Microphone</strong> or <strong>Camera</strong>. Recording your Mac's own sound (🔊) needs macOS 13 or later.</p>
+<h3>Send to… says my credentials can't be read</h3>
+<p>Edit the destination in <strong>Settings ▸ Sharing</strong> and enter the key or token again. This happens when the Mac's Keychain entry was reset, or the settings came from another Mac.</p>
+<h3>My company manages QuickGrab</h3>
+<p>IT can set and lock some settings with a configuration profile for the preference domain <code>com.rindworks.quickgrab</code>. Locked settings say &quot;Set by your organization&quot;. Email us for the list of settings and an example profile.</p>
+<h2>Privacy</h2>
+<p>QuickGrab doesn't collect any of your data. Read the <a href="quickgrab-privacy.html">privacy policy</a>.</p>
+  </main>
+  <dc-import name="Footer" show-cta="{{ false }}" hint-size="100%,220px"></dc-import>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

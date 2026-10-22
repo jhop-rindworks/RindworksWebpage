@@ -25,7 +25,7 @@
       </div>
       <p style="margin:0;font-size:18px;line-height:1.6;color:#334155;max-width:560px">QuickGrab makes it easy to capture, explain, and share what’s on your screen. Take screenshots and screen recordings, highlight what matters, and pull text straight from your screen—all from one handy app.</p>
       <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:12px;align-items:center">
-        <a href="#" style="display:flex;align-items:center;gap:10px;background:#0F172A;color:#FFFFFF;text-decoration:none;padding:9px 18px;border-radius:10px;line-height:1.1" style-hover="background:#22105C"><i class="ph ph-apple-logo" style="font-size:26px"></i><span style="display:flex;flex-direction:column"><span style="font-size:11px;color:#CBD5E1">Download on the</span><span style="font-size:16px;font-weight:600">Mac App Store</span></span></a>
+        <sc-if value="{{ onAppStore }}" hint-placeholder-val="{{ false }}"><a href="{{ appStoreUrl }}" style="display:flex;line-height:0"><img src="https://toolbox.marketingtools.apple.com/api/badges/download-on-the-mac-app-store/black/en-us?size=250x83" alt="Download on the Mac App Store" style="height:48px;width:auto"></a></sc-if>
         <a href="contact.html" style="display:flex;align-items:center;gap:8px;background:#22105C;color:#FFFFFF;text-decoration:none;font-size:15px;font-weight:500;padding:13px 22px;border-radius:10px" style-hover="background:#34207F">Ask us about launch <i class="ph ph-arrow-right"></i></a>
       </div>
     </div>
@@ -63,9 +63,13 @@
 </div>
 </x-dc>
 <script type="text/x-dc" data-dc-script>
+// The app's Mac App Store link. Apple's official badge shows next to "Ask us about launch" once
+// this is set (their marketing guidelines ask for their badge artwork, not a look-alike button).
+const APP_STORE_URL = '';
+
 class Component extends DCLogic {
   renderVals() {
-    return { features: [
+    return { onAppStore: !!APP_STORE_URL, appStoreUrl: APP_STORE_URL, features: [
       { icon: 'ph-selection-all', title: 'Capture the whole picture', body: 'Grab a window, your full screen, or a scrolling page. Record demos with sound and your camera, or create quick GIFs.' },
       { icon: 'ph-pencil-simple-line', title: 'Make your point clear', body: 'Add arrows, highlights, and numbered steps to show exactly what you mean. Turn your captures into guides people can follow.' },
       { icon: 'ph-text-aa', title: 'Skip the retyping', body: 'Copy text from screenshots and turn captured tables into spreadsheet cells. Put what’s on your screen straight to work.' },
